@@ -19,5 +19,5 @@
     * $\mathrm{Corr}(X,Y) \ne \mathrm{Corr}(f(X), g(Y)) $, em geral;
     * $\mathrm{Corr}(X,Y) = 0$ não implica que $X$ e $Y$ sejam independentes;
     * $\mathrm{Corr}(X,Y) = 1$ não implica que $X$ e $Y$ tenham dependência perfeita;
-* *Desiderata* para um
+* *Desiderata* para boas medidas de dependência [Renyi]:
 
