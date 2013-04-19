@@ -5,14 +5,11 @@
 ---
 ## Dependência estatística
 
-* Independência estatística:
-    $$P(x,y) = P(x)P(y)$$
-    $$P(x|y) = P(x)$$
+* Independência estatística: $P(x,y) = P(x)P(y)$, ou: $$P(x|y) = P(x)$$
 * Dependência completa:
     $$P(x|y) = \delta(x - F(y))$$
-* Como representar dependência parcial?
-* Correlação?
-    $$\hat{\rho} = \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}$$
+* Dependencia parcial: correlação?
+    $\hat{\rho} = \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}$
 
 ---
 
@@ -22,5 +19,5 @@
     * $\mathrm{Corr}(X,Y) \ne \mathrm{Corr}(f(X), g(Y)) $, em geral;
     * $\mathrm{Corr}(X,Y) = 0$ não implica que $X$ e $Y$ sejam independentes;
     * $\mathrm{Corr}(X,Y) = 1$ não implica que $X$ e $Y$ tenham dependência perfeita;
-* **Desiderata** para um
+* *Desiderata* para um
 
