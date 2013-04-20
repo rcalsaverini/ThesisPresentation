@@ -20,8 +20,7 @@
         </script>
       
     <link href="css/style.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,800italic,300,400,800' rel='stylesheet' type='text/css'>    
-
+<link href="http://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet" />
 
   </head>
 
@@ -33,15 +32,11 @@
     <div id="impress">
     <div class='step' >
     
-<h2>Teoria de dependência estatística, Cópulas e teoria de informação</h2>
+<h1>Teoria de dependência estatística, Cópulas e teoria de informação</h1>
 
 <h3>Rafael S. Calsaverini</h3>
-
-<h3><a href="mailto:rafael.calsaverini@gmail.com">rafael.calsaverini@gmail.com</a></h3>
-
-<h3>26/04/2013</h3>
 </div>
-      <div class='step' >
+      <div class='step'  data-x="1000" data-scale="2">
     
 <h2>Dependência estatística</h2>
 
@@ -49,23 +44,97 @@
 <li>Independência estatística: $P(x,y) = P(x)P(y)$, ou: $$P(x|y) = P(x)$$</li>
 <li>Dependência completa:
 $$P(x|y) = \delta(x - F(y))$$</li>
-<li>Dependencia parcial: correlação?
-$\hat{\rho} = \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}$</li>
+<li>Quanto mais posso saber sobre $X$ conhecendo $Y$? $P(X|Y)$</li>
 </ul>
 </div>
       <div class='step' >
     
-<h2>Problemas com a correlação e medidas de dependência</h2>
+<h2>Correlação</h2>
 
 <ul>
+<li>Módulo usualmente empregado como medida de dependência estatística.
+$$|\mathrm{Corr}(X,Y)| = \left| \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}\right|$$</li>
 <li>Correlação é problemática:
 
 <ul>
 <li>$\mathrm{Corr}(X,Y) \ne \mathrm{Corr}(f(X), g(Y)) $, em geral;</li>
 <li>$\mathrm{Corr}(X,Y) = 0$ não implica que $X$ e $Y$ sejam independentes;</li>
-<li>$\mathrm{Corr}(X,Y) = 1$ não implica que $X$ e $Y$ tenham dependência perfeita;</li>
+<li>$\mathrm{Corr}(X,Y) = 1$ não implica que $X$ e $Y$ tenham dependência perfeita.</li>
 </ul></li>
-<li><em>Desiderata</em> para boas medidas de dependência [Renyi]:</li>
+</ul>
+</div>
+      <div class='step'  data-x="1000" data-scale="2">
+    
+<h2>Medidas de dependência</h2>
+
+<ul>
+<li><p>Desideratos para uma boa medida de dependência <sup><a href="#frenyi" id="renyi">[1]</a></sup>:</p>
+
+<ul>
+<li>$M[X,Y]$ é um funcional da distribuição conjunta;</li>
+<li>$M[X,Y] = M[Y,X]$;</li>
+<li>$M[X,Y] \Leftrightarrow$ $X$ e $Y$ independentes;</li>
+<li>$M[X,Y]$ é máximo $\Leftrightarrow$ $P(X|Y) = \delta(X - f(Y))$;</li>
+<li>$M[X,Y] = M[g(X), f(Y)]$  $\forall g, f$ monotônicas</li>
+<li>Se $X,Y \thicksim \mathrm{StandardNormal}(\rho)$, então $M[X,Y] = f(\rho)$ </li>
+</ul></li>
+<li><p>Exemplos: $\tau$ de Kendall, $\rho$ de Spearman.</p>
+
+<ul>
+<li>$\small\tau = \mathrm{Prob}\left[(X - X&#39;)(Y-Y&#39;) &gt; 0\right] - \mathrm{Prob}\left[(X - X&#39;)(Y-Y&#39;) &lt; 0\right]$</li>
+<li>$\small\rho = \mathrm{Corr}(\mathrm{rank}(X), \mathrm{rank}(Y))$</li>
+</ul></li>
+</ul>
+
+<div id="footnote">
+    <p id="frenyi"><a href="#renyi">[1]</a> A. Renyi. On measures of dependence. <em>Acta. Math. Acad. Sci. Hungar.</em>, 10:441–451, 1959;
+</div>
+</div>
+      <div class='step' >
+    
+<h2>Informação Mútua</h2>
+
+<ul>
+<li><p>Definição</p>
+
+<ol>
+<li>&quot;Distância&quot; <a href="#fkl" id="kl">[2]</a> entre a distribuição conjunta e a variedade de distribuições fatoráveis</li>
+<li>Valor esperado da divergência KL entre a distribuição de $X$ e $X | Y = y$</li>
+<li>Valor esperado da redução na entropia de $X$ ao se obter o valor de $Y$</li>
+</ol>
+
+<p>$$I(X,Y) = \int \mathrm{d}x\mathrm{d}y\; p(x,y) \log\frac{p(x,y)}{p(x)p(y)}$$</p></li>
+</ul>
+
+<div id="footnote">
+    <p id="fkl"><a href="#kl">[2]</a> divergência de Kullback-Leibler:
+    $$\int p(x)\log\frac{p(x)}{q(x)} \;\mathrm{d}x$$
+</div>
+</div>
+      <div class='step'  data-x="1000" data-scale="2">
+    
+<div id="theorem">
+<h2>Cópulas - Teorema de Sklar</h2>
+Para toda distribuição cumulativa conjunta contínua de duas variáveis
+$F_{X,Y}(x,y)$, com distribuições cumulativas $F_X(x)$ e $F_Y(y)$, existe 
+uma função cópula única $C(u, v)$ tal que:
+
+$$F_{X,Y}(x,y) = C(F_X(x), F_Y(y))$$
+</div>
+
+<ul>
+<li>Exemplos
+
+<ul>
+<li>Arquimedianas: $C(u,v) = \psi^{-1}(\psi(u) + \psi(v))$</li>
+<li>Normal: $\Phi_{\rho}(\phi^{-1}(u), \phi^{-1}(v))$</li>
+</ul></li>
+<li>Densidade de cópula: 
+
+<ul>
+<li>$c(u,v)=\frac{\partial^2 C}{\partial u\partial v}$</li>
+<li>$p_{XY} = c(F{X}(x))$</li>
+</ul></li>
 </ul>
 
       </div>
