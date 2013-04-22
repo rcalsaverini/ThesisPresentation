@@ -110,7 +110,7 @@ $$F_{X,Y}(x,y) = C(F_X(x), F_Y(y))$$
 * Para qualquer distribuição: $I(X,Y) \ge -\frac{1}{2} \log(1 - \mathrm{Corr}(X,Y)^2)$
 * $Corr[X,Y]$ vs. $\rho$: correlação não é um bom estimador do parâmetro $\rho$.
 * $Corr[X,Y]$ pode subestimar grosseiramente a dependência.
-<img src="../figs/mutinfo2.png" width="60%" align="center"/>
+<img src="./figs/mutinfo2.png" width="60%" align="center"/>
 
 ---
 = data-x="1000" data-scale="2"
@@ -131,8 +131,8 @@ $$F_{X,Y}(x,y) = C(F_X(x), F_Y(y))$$
 * $I[X,Y] \ge -\frac{1}{2}\log(1 - \rho^2)$ para distribuições elípticas.
 * $\tau$ de Kendall para distribuições elípticas $\rho = \sin\left(\frac{\pi\tau}{2}\right)$
 
-<img src="../figs/IM_Pearson2.png" width="49%" />
-<img src="../figs/MIvsrho_tau_final2.png" width="50%" />
+<img src="./figs/IM_Pearson2.png" width="49%" />
+<img src="./figs/MIvsrho_tau_final2.png" width="50%" />
 
 ---
 
@@ -141,8 +141,8 @@ $$F_{X,Y}(x,y) = C(F_X(x), F_Y(y))$$
 * $I[X,Y] \ge -\frac{1}{2}\log(1 - \rho^2)$ para distribuições elípticas.
 * $\tau$ de Kendall para distribuições elípticas $\rho = \sin\left(\frac{\pi\tau}{2}\right)$
 
-<img src="../figs/locohimi.png" height="400" />
-<img src="../figs/gausscompat.png" height="400" />
+<img src="./figs/locohimi.png" height="400" />
+<img src="./figs/gausscompat.png" height="400" />
 
 ---
 
@@ -155,6 +155,11 @@ $$F_{X,Y}(x,y) = C(F_X(x), F_Y(y))$$
 
 # Parte 2: Um modelo para emergência de autoridade em sociedades humanas
 ### Rafael S. Calsaverini
+
+
+1/2 * (1-2/N) * (1 - p) = 1/2 - q
+
+
 
 
 
