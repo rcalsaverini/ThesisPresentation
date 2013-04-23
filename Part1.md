@@ -24,6 +24,7 @@
 
 ---
 = data-x="1000" data-scale="2"
+
 ## Medidas de dependência
 
 * Desideratos para uma boa medida de dependência <sup><a href="#frenyi" id="renyi">[1]</a></sup>:
@@ -32,11 +33,7 @@
     * $M[X,Y]$ é mínimo se $X$ e $Y$ independentes;
     * $M[X,Y]$ é máximo $\Leftrightarrow$ $P(X|Y) = \delta(X - f(Y))$;
     * $M[X,Y] = M[g(X), f(Y)]$  $\forall g, f$ monotônicas
-    * Se $X,Y \thicksim \mathrm{StandardNormal}(\rho)$, então $M[X,Y] = f(\rho)$ 
-
-* Exemplos: $\tau$ de Kendall, $\rho$ de Spearman.
-    * $\small\tau = \mathrm{Prob}\left[(X - X')(Y-Y') > 0\right] - \mathrm{Prob}\left[(X - X')(Y-Y') < 0\right]$
-    * $\small\rho = \mathrm{Corr}(\mathrm{rank}(X), \mathrm{rank}(Y))$
+    * Se $X,Y \thicksim \mathrm{Normal}(\sigma_X, \sigma_Y, \rho)$, então $M[X,Y] = f(\rho)$ 
 
 <div id="footnote">
     <p id="frenyi"><a href="#renyi">[1]</a> A. Renyi. On measures of dependence. <em>Acta. Math. Acad. Sci. Hungar.</em>, 10:441–451, 1959;
@@ -44,6 +41,14 @@
 
 
 ---
+
+## Medida de dependência
+* Exemplos: $\tau$ de Kendall, $\rho$ de Spearman.
+    * $\small\tau = \mathrm{Prob}\left[(X - X')(Y-Y') > 0\right] - \mathrm{Prob}\left[(X - X')(Y-Y') < 0\right]$
+    * $\small\rho = \mathrm{Corr}(\mathrm{rank}(X), \mathrm{rank}(Y))$
+
+---
+
 ## Informação Mútua
 
 * Definição
@@ -52,7 +57,7 @@
     3. Valor esperado da redução na entropia de $X$ ao se obter o valor de $Y$
 
     $$I(X,Y) = \int \mathrm{d}x\mathrm{d}y\; p(x,y) \log\frac{p(x,y)}{p(x)p(y)}$$
-
+* Para qualquer distribuição: $I(X,Y) \ge -\frac{1}{2} \log(1 - \mathrm{Corr}(X,Y)^2)$
 <div id="footnote">
     <p id="fkl"><a href="#kl">[2]</a> divergência de Kullback-Leibler:
     $$\int p(x)\log\frac{p(x)}{q(x)} \;\mathrm{d}x$$
@@ -100,24 +105,23 @@ $$F_{X,Y}(x,y) = C(F_X(x), F_Y(y))$$
     $$I(X,Y) = \int \int \mathrm{d} u \mathrm{d} v \; c(u,v) \log c(u,v)  = - S[c] \ge 0$$
     * para a cópula normal: $I(X,Y) = -\frac{1}{2} \log(1 - \rho^2)$
     * Decomposição: $H[X, Y] = H[X] + H[Y] + H[\mathrm{cópula}]$
+    * Cópula gaussiana maximiza entropia para dada correlação linear.
 
 ---
 
 ## Problemas com a Correlação
 
-
-* Cópula gaussiana maximiza entropia para dada correlação linear.
-* Para qualquer distribuição: $I(X,Y) \ge -\frac{1}{2} \log(1 - \mathrm{Corr}(X,Y)^2)$
-* $Corr[X,Y]$ vs. $\rho$: correlação não é um bom estimador do parâmetro $\rho$.
-* $Corr[X,Y]$ pode subestimar grosseiramente a dependência.
-<img src="./figs/mutinfo2.png" width="60%" align="center"/>
+* $\mathrm{Corr}(X,Y)$ depende explicitamente das distribuições marginais
+* $\mathrm{Corr}(X,Y)$ vs. $\rho$: correlação não é um bom estimador do parâmetro $\rho$.
+* $\mathrm{Corr}(X,Y)$ pode subestimar grosseiramente a dependência.
+<img src="./figs/mutinfo2.png" width="50%" align="center"/>
 
 ---
 = data-x="1000" data-scale="2"
 
 ## Cópulas esféricas e elipticas
 * Distribuição esféricas e elípticas:
-    * Distribuição $p(\vec{x})$ é esférica se $E\left[ e^{i\vec{k}\cdot\vec{x}}\right] = \psi\left(\dfrac{|k|^2}{2}\right)$
+    * Distribuição $p(\vec{x})$ é esférica se $E\left[ e^{i\vec{k}\cdot\vec{x}}\right] = \psi\left(|k|^2/2\right)$
     * Distribuição $p(\vec{y})$ é elíptica se $E\left[ e^{i\vec{k}\cdot\vec{y}}\right] = \psi\left(\frac{1}{2}\vec{k}\Sigma^T \vec{k}\right)$
     * $\vec{X} \thicksim$ distribuição esférica $\Rightarrow \vec{Y} = A\vec{X} \thicksim$ distribuição elíptica,
 * Proposição: Se $C(u,v | \Sigma)$ é cópula elíptica derivada da cópula esférica $C(u,v)$, então:
@@ -156,10 +160,20 @@ $$F_{X,Y}(x,y) = C(F_X(x), F_Y(y))$$
 # Parte 2: Um modelo para emergência de autoridade em sociedades humanas
 ### Rafael S. Calsaverini
 
+---
+# Comportamento igualitário vs. hierárquico
 
-1/2 * (1-2/N) * (1 - p) = 1/2 - q
+* Organização social - igualitária vs. autoritária
+* Grandes primatas (\(\text{Chimpanzés, Bonobos, Gorilas}\))
+* Diversidade de comportamentos social humano
+* Origem da diversidade: ecológica vs. cultural.
 
+---
 
+#Evidências empíricas - U-shaped evolution
+
+* 
+<img src="./figs/ushaped.png" width="70%" />
 
 
 

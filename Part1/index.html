@@ -67,7 +67,7 @@ $$|\mathrm{Corr}(X,Y)| = \left| \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}\righ
 <h2>Medidas de dependência</h2>
 
 <ul>
-<li><p>Desideratos para uma boa medida de dependência <sup><a href="#frenyi" id="renyi">[1]</a></sup>:</p>
+<li>Desideratos para uma boa medida de dependência <sup><a href="#frenyi" id="renyi">[1]</a></sup>:
 
 <ul>
 <li>$M[X,Y]$ é um funcional da distribuição conjunta;</li>
@@ -75,19 +75,26 @@ $$|\mathrm{Corr}(X,Y)| = \left| \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}\righ
 <li>$M[X,Y]$ é mínimo se $X$ e $Y$ independentes;</li>
 <li>$M[X,Y]$ é máximo $\Leftrightarrow$ $P(X|Y) = \delta(X - f(Y))$;</li>
 <li>$M[X,Y] = M[g(X), f(Y)]$  $\forall g, f$ monotônicas</li>
-<li>Se $X,Y \thicksim \mathrm{StandardNormal}(\rho)$, então $M[X,Y] = f(\rho)$ </li>
-</ul></li>
-<li><p>Exemplos: $\tau$ de Kendall, $\rho$ de Spearman.</p>
-
-<ul>
-<li>$\small\tau = \mathrm{Prob}\left[(X - X&#39;)(Y-Y&#39;) &gt; 0\right] - \mathrm{Prob}\left[(X - X&#39;)(Y-Y&#39;) &lt; 0\right]$</li>
-<li>$\small\rho = \mathrm{Corr}(\mathrm{rank}(X), \mathrm{rank}(Y))$</li>
+<li>Se $X,Y \thicksim \mathrm{Normal}(\sigma_X, \sigma_Y, \rho)$, então $M[X,Y] = f(\rho)$ </li>
 </ul></li>
 </ul>
 
 <div id="footnote">
     <p id="frenyi"><a href="#renyi">[1]</a> A. Renyi. On measures of dependence. <em>Acta. Math. Acad. Sci. Hungar.</em>, 10:441–451, 1959;
 </div>
+</div>
+      <div class='step' >
+    
+<h2>Medida de dependência</h2>
+
+<ul>
+<li>Exemplos: $\tau$ de Kendall, $\rho$ de Spearman.
+
+<ul>
+<li>$\small\tau = \mathrm{Prob}\left[(X - X&#39;)(Y-Y&#39;) &gt; 0\right] - \mathrm{Prob}\left[(X - X&#39;)(Y-Y&#39;) &lt; 0\right]$</li>
+<li>$\small\rho = \mathrm{Corr}(\mathrm{rank}(X), \mathrm{rank}(Y))$</li>
+</ul></li>
+</ul>
 </div>
       <div class='step' >
     
@@ -103,12 +110,12 @@ $$|\mathrm{Corr}(X,Y)| = \left| \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}\righ
 </ol>
 
 <p>$$I(X,Y) = \int \mathrm{d}x\mathrm{d}y\; p(x,y) \log\frac{p(x,y)}{p(x)p(y)}$$</p></li>
-</ul>
-
+<li><p>Para qualquer distribuição: $I(X,Y) \ge -\frac{1}{2} \log(1 - \mathrm{Corr}(X,Y)^2)$
 <div id="footnote">
-    <p id="fkl"><a href="#kl">[2]</a> divergência de Kullback-Leibler:
-    $$\int p(x)\log\frac{p(x)}{q(x)} \;\mathrm{d}x$$
-</div>
+<p id="fkl"><a href="#kl">[2]</a> divergência de Kullback-Leibler:
+$$\int p(x)\log\frac{p(x)}{q(x)} \;\mathrm{d}x$$
+</div></p></li>
+</ul>
 </div>
       <div class='step'  data-x="1000" data-scale="2">
     
@@ -166,6 +173,7 @@ $$F_{X,Y}(x,y) = C(F_X(x), F_Y(y))$$
 $$I(X,Y) = \int \int \mathrm{d} u \mathrm{d} v \; c(u,v) \log c(u,v)  = - S[c] \ge 0$$</li>
 <li>para a cópula normal: $I(X,Y) = -\frac{1}{2} \log(1 - \rho^2)$</li>
 <li>Decomposição: $H[X, Y] = H[X] + H[Y] + H[\mathrm{cópula}]$</li>
+<li>Cópula gaussiana maximiza entropia para dada correlação linear.</li>
 </ul></li>
 </ul>
 </div>
@@ -174,11 +182,10 @@ $$I(X,Y) = \int \int \mathrm{d} u \mathrm{d} v \; c(u,v) \log c(u,v)  = - S[c] \
 <h2>Problemas com a Correlação</h2>
 
 <ul>
-<li>Cópula gaussiana maximiza entropia para dada correlação linear.</li>
-<li>Para qualquer distribuição: $I(X,Y) \ge -\frac{1}{2} \log(1 - \mathrm{Corr}(X,Y)^2)$</li>
-<li>$Corr[X,Y]$ vs. $\rho$: correlação não é um bom estimador do parâmetro $\rho$.</li>
-<li>$Corr[X,Y]$ pode subestimar grosseiramente a dependência.
-<img src="./figs/mutinfo2.png" width="60%" align="center"/></li>
+<li>$\mathrm{Corr}(X,Y)$ depende explicitamente das distribuições marginais</li>
+<li>$\mathrm{Corr}(X,Y)$ vs. $\rho$: correlação não é um bom estimador do parâmetro $\rho$.</li>
+<li>$\mathrm{Corr}(X,Y)$ pode subestimar grosseiramente a dependência.
+<img src="./figs/mutinfo2.png" width="50%" align="center"/></li>
 </ul>
 </div>
       <div class='step'  data-x="1000" data-scale="2">
@@ -189,7 +196,7 @@ $$I(X,Y) = \int \int \mathrm{d} u \mathrm{d} v \; c(u,v) \log c(u,v)  = - S[c] \
 <li>Distribuição esféricas e elípticas:
 
 <ul>
-<li>Distribuição $p(\vec{x})$ é esférica se $E\left[ e^{i\vec{k}\cdot\vec{x}}\right] = \psi\left(\dfrac{|k|^2}{2}\right)$</li>
+<li>Distribuição $p(\vec{x})$ é esférica se $E\left[ e^{i\vec{k}\cdot\vec{x}}\right] = \psi\left(|k|^2/2\right)$</li>
 <li>Distribuição $p(\vec{y})$ é elíptica se $E\left[ e^{i\vec{k}\cdot\vec{y}}\right] = \psi\left(\frac{1}{2}\vec{k}\Sigma^T \vec{k}\right)$</li>
 <li>$\vec{X} \thicksim$ distribuição esférica $\Rightarrow \vec{Y} = A\vec{X} \thicksim$ distribuição elíptica,</li>
 </ul></li>
@@ -237,8 +244,26 @@ onde $I_{0}(\Sigma) = -\frac{1}{2}\log\Sigma$ é a informação mútua de uma c�
 <h1>Parte 2: Um modelo para emergência de autoridade em sociedades humanas</h1>
 
 <h3>Rafael S. Calsaverini</h3>
+</div>
+      <div class='step' >
+    
+<h1>Comportamento igualitário vs. hierárquico</h1>
 
-<p>1/2 * (1-2/N) * (1 - p) = 1/2 - q</p>
+<ul>
+<li>Organização social - igualitária vs. autoritária</li>
+<li>Grandes primatas ((\text{Chimpanzés, Bonobos, Gorilas}))</li>
+<li>Diversidade de comportamentos social humano</li>
+<li>Origem da diversidade: ecológica vs. cultural.</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h1>Evidências empíricas - U-shaped evolution</h1>
+
+<ul>
+<li>
+<img src="./figs/ushaped.png" width="70%" /></li>
+</ul>
 </div>
       <div class='step' >
     
