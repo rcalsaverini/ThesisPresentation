@@ -13,7 +13,7 @@
 <script>hljs.initHighlightingOnLoad();</script>
 
         <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+          MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\[','\]']]}});
         </script>
         <script type="text/javascript"
           src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -30,11 +30,29 @@
   <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
   </div>
     <div id="impress">
-    <div class='step' >
+    <div class='step'  data-scale="2">
+    
+<h1>Tese: Uma abordagem mecânico-estatística de dois tópicos de interesse em finanças, economia e sociologia.</h1>
+
+<h2>Rafael S. Calsaverini</h2>
+
+<div id="footnote">
+<ul>
+<li>Tese - github repo: https://github.com/rcalsaverini/Thesis</li>
+<li>pdf: https://github.com/rcalsaverini/Thesis/blob/master/TeseRafaelCalsaverini.pdf?raw=true</li>
+</ul>
+</div>
+</div>
+      <div class='step' >
     
 <h1>Parte 1: Teoria de dependência estatística, Cópulas e teoria de informação</h1>
 
-<h3>Rafael S. Calsaverini</h3>
+<div id="footnote">
+<ul>
+<li> Artigo: R. S. Calsaverini and R. Vicente. An information-theoretic approach to statistical dependence: Copula information.<em> Europhys. Lett. </em>88 68003, 2009.</li>
+<li> URL: http://iopscience.iop.org/0295-5075/88/6/68003?ejredirect=migration</li>
+</ul>
+</div>
 </div>
       <div class='step'  data-x="1000" data-scale="2">
     
@@ -43,7 +61,10 @@
 <ul>
 <li>Independência estatística: $P(x,y) = P(x)P(y)$, ou: $$P(x|y) = P(x)$$</li>
 <li>Dependência completa: $P(x|y) = \delta(x - F(y))$</li>
+<li>Definição informal: quanta informação uma variável oferece sobre o valor de outra.</li>
+<li>Como medir dependência?</li>
 <li>É possível separar informação idiossincrática sobre cada variável da informação a respeito de sua dependência?</li>
+<li>Dependência vs. concordância.</li>
 </ul>
 </div>
       <div class='step' >
@@ -67,12 +88,12 @@ $$|\mathrm{Corr}(X,Y)| = \left| \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}\righ
 <h2>Medidas de dependência</h2>
 
 <ul>
-<li>Desideratos para uma boa medida de dependência <sup><a href="#frenyi" id="renyi">[1]</a></sup>:
+<li>Desideratos para uma boa medida de dependência <sup><a href="#frenyi" id="renyi">(1)</a></sup>:
 
 <ul>
 <li>$M[X,Y]$ é um funcional da distribuição conjunta;</li>
 <li>$M[X,Y] = M[Y,X]$;</li>
-<li>$M[X,Y]$ é mínimo se $X$ e $Y$ independentes;</li>
+<li>$M[X,Y]$ é mínimo $\Leftrightarrow$  $X$ e $Y$ independentes;</li>
 <li>$M[X,Y]$ é máximo $\Leftrightarrow$ $P(X|Y) = \delta(X - f(Y))$;</li>
 <li>$M[X,Y] = M[g(X), f(Y)]$  $\forall g, f$ monotônicas</li>
 <li>Se $X,Y \thicksim \mathrm{Normal}(\sigma_X, \sigma_Y, \rho)$, então $M[X,Y] = f(\rho)$ </li>
@@ -80,7 +101,7 @@ $$|\mathrm{Corr}(X,Y)| = \left| \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}\righ
 </ul>
 
 <div id="footnote">
-    <p id="frenyi"><a href="#renyi">[1]</a> A. Renyi. On measures of dependence. <em>Acta. Math. Acad. Sci. Hungar.</em>, 10:441–451, 1959;
+    <p id="frenyi"><a href="#renyi">(1)</a> A. Renyi. On measures of dependence. <em>Acta. Math. Acad. Sci. Hungar.</em>, 10:441–451, 1959;
 </div>
 </div>
       <div class='step' >
@@ -88,11 +109,13 @@ $$|\mathrm{Corr}(X,Y)| = \left| \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}\righ
 <h2>Medida de dependência</h2>
 
 <ul>
-<li>Exemplos: $\tau$ de Kendall, $\rho$ de Spearman.
+<li>Exemplos:
 
 <ul>
-<li>$\small\tau = \mathrm{Prob}\left[(X - X&#39;)(Y-Y&#39;) &gt; 0\right] - \mathrm{Prob}\left[(X - X&#39;)(Y-Y&#39;) &lt; 0\right]$</li>
-<li>$\small\rho = \mathrm{Corr}(\mathrm{rank}(X), \mathrm{rank}(Y))$</li>
+<li>$\tau$ de Kendall
+$$\small\tau = \mathrm{Prob}\left[(X - X&#39;)(Y-Y&#39;) &gt; 0\right] - \mathrm{Prob}\left[(X - X&#39;)(Y-Y&#39;) &lt; 0\right]$$</li>
+<li>$\rho$ de Spearman.
+$$\rho = \mathrm{Corr}(\mathrm{rank}(X), \mathrm{rank}(Y))$$</li>
 </ul></li>
 </ul>
 </div>
@@ -104,7 +127,7 @@ $$|\mathrm{Corr}(X,Y)| = \left| \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}\righ
 <li><p>Definição</p>
 
 <ol>
-<li>&quot;Distância&quot; <a href="#fkl" id="kl">[2]</a> entre a distribuição conjunta e a variedade de distribuições fatoráveis</li>
+<li>&quot;Distância&quot; <a href="#fkl" id="kl">(2)</a> entre a distribuição conjunta e a variedade de distribuições fatoráveis</li>
 <li>Valor esperado da divergência KL entre a distribuição de $X$ e $X | Y = y$</li>
 <li>Valor esperado da redução na entropia de $X$ ao se obter o valor de $Y$</li>
 </ol>
@@ -112,7 +135,7 @@ $$|\mathrm{Corr}(X,Y)| = \left| \frac{E[XY] - E[X]E[Y]}{\sigma[X]\sigma[Y]}\righ
 <p>$$I(X,Y) = \int \mathrm{d}x\mathrm{d}y\; p(x,y) \log\frac{p(x,y)}{p(x)p(y)}$$</p></li>
 <li><p>Para qualquer distribuição: $I(X,Y) \ge -\frac{1}{2} \log(1 - \mathrm{Corr}(X,Y)^2)$
 <div id="footnote">
-<p id="fkl"><a href="#kl">[2]</a> divergência de Kullback-Leibler:
+<p id="fkl"><a href="#kl">(2)</a> divergência de Kullback-Leibler:
 $$\int p(x)\log\frac{p(x)}{q(x)} \;\mathrm{d}x$$
 </div></p></li>
 </ul>
@@ -156,10 +179,10 @@ $$F_{X,Y}(x,y) = C(F_X(x), F_Y(y))$$
 <li>$M[X,Y]$ é máximo se $C(u,v) = \max(0,u+v-1)$ ou $C(u,v)=\min(u,v)$, chamadas cópulas de Frechet-Hoeffding;</li>
 <li>Se $C(u,v) = N_\rho(u,v)$, então $M[X,Y] = f(\rho)$</li>
 </ul></li>
-<li>As exigências de Renyi [1959] são consequencia imediata das exigências acima.</li>
+<li>As exigências de (Renyi, 1959) são consequencia imediata das exigências acima.</li>
 </ul>
 </div>
-      <div class='step'  data-x="1000" data-scale="2">
+      <div class='step'  data-x="1000" data-scale="2" data-y="2000" data-rotate="90">
     
 <h2>Medidas de dependência e cópulas</h2>
 
@@ -213,31 +236,77 @@ onde $I_{0}(\Sigma) = -\frac{1}{2}\log\Sigma$ é a informação mútua de uma c�
 <li>Parte gaussiana da dependência é associada a dependência linear.</li>
 <li>$I[X,Y] \ge -\frac{1}{2}\log(1 - \rho^2)$ para distribuições elípticas.</li>
 <li>$\tau$ de Kendall para distribuições elípticas $\rho = \sin\left(\frac{\pi\tau}{2}\right)$</li>
+<li>Kraskov-Stögbauer-Grassberger (Phys. Rev. E, 69:066138, 2004)</li>
 </ul>
 
 <p><img src="./figs/IM_Pearson2.png" width="49%" />
-<img src="./figs/MIvsrho_tau_final2.png" width="50%" /></p>
+<img src="./figs/MIvsrho_tau_final2.png" width="50%" />
+<div id='footnote'>
+Estimativas para a informação mútua usando o algoritmo KSG contra $\tau$ ou $\rho$ para pares de séries temporais de log-retornos de abertura vs. fechamento para ações que compões o S&amp;P500.
+</div></p>
 </div>
       <div class='step' >
     
 <h2>Excesso de Informação Mútua - teste de normalidade na dependência</h2>
 
 <ul>
-<li>Parte gaussiana da dependência é associada a dependência linear.</li>
-<li>$I[X,Y] \ge -\frac{1}{2}\log(1 - \rho^2)$ para distribuições elípticas.</li>
-<li>$\tau$ de Kendall para distribuições elípticas $\rho = \sin\left(\frac{\pi\tau}{2}\right)$</li>
+<li>Seleções do gráfico anterior:</li>
 </ul>
 
-<p><img src="./figs/locohimi.png" height="400" />
-<img src="./figs/gausscompat.png" height="400" /></p>
+<p><img src="./figs/locohimi.png" width="49%" />
+<img src="./figs/gausscompat.png" width="50%" />
+<div id='footnote'>
+Seleção de pares de ações com baixa correlação e grande excesso de informação mútua e pares compatíveis com uma distribuição gaussiana.
+</div></p>
 </div>
       <div class='step' >
     
-<h2>Ajuste de cópulas elípticas</h2>
+<h2>Cópula t - ajuste</h2>
 
 <ul>
 <li>Método de &#39;&#39;moment matching&#39;&#39; via $\tau$ de Kendall e informação mútua</li>
+<li>Distribuição t de Student $\to$ Cópula t
+$$p_{t}(x,y\mid  \rho, \nu) = \frac{\Gamma(1+\frac{\nu}{2})}{\Gamma(\frac{\nu}{2}){\pi\nu\sqrt{1-\rho^2}}}\left[1+ \frac{x^2+ y^2 - 2\rho xy}{(1-\rho^2)\nu}\right]^{-(1+\frac{\nu}{2})}$$</li>
+<li>fat tails, tail dependency, $t(\rho, \nu) \to \mathrm{Normal}(\rho)$ quando $\nu\to\infty$</li>
+<li>Cópula $t$:
+$$C_{T}(u,v|\nu, \rho) = \frac{\Gamma(1+\frac{\nu}{2})}{\Gamma(\frac{\nu}{2}){\pi\nu\sqrt{1-\rho^2}}}\int_{-\infty}^{t_\nu^{-1}(u)} \int_{-\infty}^{t_\nu^{-1}(v)} \mathrm{d} x \mathrm{d}y {\left[1+ \frac{q_{\rho}(x,y)}{\nu}\right]^{-\frac{\nu+2}{2}}}$$</li>
 </ul>
+</div>
+      <div class='step' >
+    
+<h2>Cópula t - ajuste</h2>
+
+<ul>
+<li>Se $\vec{x} \thicksim t(\rho, \nu)$, então $I(x_1, x_2, \ldots, x_n) = n H_{1}(\nu) − H_n(\nu)$</li>
+<li>$H_{n}(\nu)$ pode ser calculada usando um truque similar ao truque de réplicas $\log(x) = \lim_{a\to\infty}\frac{\partial}{\partial a} (x^a)$</li>
+<li>Informação mútua:
+$$I(\nu) = 2\log\left(\sqrt{\frac{\nu}{2\pi}}B\left(\frac{\nu}{2},\frac{1}{2}\right) \right) - \frac{2+\nu}{\nu} + (1+\nu)\left[ \psi \left(\frac{\nu+1}{2}\right) - \psi \left(\frac{\nu}{2}\right) \right]$$</li>
+<li>Ajuste:
+
+<ul>
+<li>$\rho$ é ajustado medindo $\tau$</li>
+<li>$\nu$ é ajustado medindo $I(X,Y)$</li>
+</ul></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Cópula t - ajuste</h2>
+
+<ul>
+<li>Simulação:
+
+<ul>
+<li>excesso de informação mútua com relação à distribuição normal vs. $\nu$</li>
+<li>$I_\text{excess}$ independe de $\rho$</li>
+</ul></li>
+</ul>
+
+<p><center><img src="./figs/I_Excess.png" width="60%" /></center></p>
+
+<div id='footnote'>
+Cada círculo corresponde a uma amostragem de 20 valores sampleados de uma distribuição $t$ para vários valores de $\nu$ e $\rho$ conhecidos. Intervalo de confiança de 90% via bootstrap.
+</div>
 </div>
       <div class='step' >
     
@@ -247,26 +316,157 @@ onde $I_{0}(\Sigma) = -\frac{1}{2}\log\Sigma$ é a informação mútua de uma c�
 </div>
       <div class='step' >
     
-<h1>Comportamento igualitário vs. hierárquico</h1>
+<h2>Comportamento igualitário vs. hierárquico</h2>
 
 <ul>
-<li>Organização social - igualitária vs. autoritária</li>
-<li>Grandes primatas ((\text{Chimpanzés, Bonobos, Gorilas}))</li>
+<li>Organização social - igualitária vs. autoritária
+
+<ul>
+<li>Grandes primatas (Chimpanzés, Bonobos, Gorilas)</li>
 <li>Diversidade de comportamentos social humano</li>
 <li>Origem da diversidade: ecológica vs. cultural.</li>
+</ul></li>
 </ul>
 </div>
       <div class='step' >
     
-<h1>Evidências empíricas - U-shaped evolution</h1>
+<h2>Evidências empíricas</h2>
 
 <ul>
-<li>
-<img src="./figs/ushaped.png" width="70%" /></li>
+<li>Evolução do comportamento social humano (&quot;u-shaped evolution&quot;):
+
+<ul>
+<li>Ancestrais hierárquicos, paleolítico igualitário, neolítico hierárquico</li>
+</ul></li>
+</ul>
+
+<p><center>
+<img src="./figs/ushaped.png" width="60%" />
+</center></p>
+
+<ul>
+<li>Humanos modernos - relação entre tamanho de grupo e formas de organização social.</li>
+</ul>
+
+<div id="footnote"> 
+<ul>
+<li>Knauft et al. Violence and sociality in human evolution. Current Anthropology, 32:391–428, 1991.</li>
+<li>Joyce Marcus. The archeological evidence for social evolution. Annu. Rev. Anthropol, 37:25166, 2008</li>
+<li>Currie et al. Rise and fall of political complexity in island south-east asia and the pacific. Nature, 467(7317):801–804, Oct. 2010.</li>
+</ul>
+</div>
+</div>
+      <div class='step' >
+    
+<h2>Evidências empíricas</h2>
+
+<ul>
+<li>Hipótese do cérebro social
+
+<ul>
+<li>Capacidade cognitiva vs. tamanho de grupo. Número de Dunbar ~ 150.</li>
+<li>Pressão seletiva sobre capacidade cognitiva social.</li>
+</ul></li>
+</ul>
+
+<p><center><img src="./figs/dunbar.png" width="60%" /></center>
+<div id="footnote"> 
+<ul>
+<li>T Sawaguchi and H Kudo. Neocortical development and social structure in primates. Primates, 31:283–90, 1990;</li>
+<li>Robin Dunbar.Neocortex size as a constraint on group size in primates. Journal of Human Evolution, 20:469–93, 1992;</li>
+</ul>
+</div></p>
+</div>
+      <div class='step' >
+    
+<h2>Evidências empíricas</h2>
+
+<ul>
+<li>Reverse dominance theory
+
+<ul>
+<li>Manutenção de estruturas igualitárias em grupos de individuos com comportamento de dominância.</li>
+<li>Reversão da dominância: candidatos a líder tem mecanismos de ascenção limitados por outros membros do grupo.</li>
+<li>Observado em estudos de agrupamentos humanos de caçadores-coletores.</li>
+</ul></li>
+</ul>
+
+<div id="footnote">
+<ul>
+<li>Boehm et al. Egalitarian behavior and reverse dominance hierarchy . Current Anthropology, 34 (3):227–254, 1993. </li>
+<li> C Boehm. Hierarchy in the Forest: The Evolution of Egalitarian Behavior. Harvard University Press, 2001. </li>
+</ul>
+</div>
+</div>
+      <div class='step'  data-x="1000" data-scale="2" rotate="65">
+    
+<h1>Modelo baseado em agentes</h1>
+
+<ul>
+<li>Grupo de $n$ agentes com capacidade cognitiva limitada.</li>
+<li>Mapa mental das relações sociais do grupo, codificado em um grafo.</li>
+<li>Aresta conectada: relação conhecida. Aresta ausente: relação desconhecida.</li>
+<li>Agente aprende nova informação através de observação e aprendizado social.</li>
+</ul>
+
+<p><center>
+<img src="./figs/starGraph.png" width="20%" />
+<img src="./figs/fullyconnected.png" width="20%" />
+</center></p>
+</div>
+      <div class='step' >
+    
+<h1>Modelo baseado em agentes</h1>
+
+<ul>
+<li>Aprendizado e manutenção de informação social é custoso (limitação cognitiva).</li>
+<li>Agente deve balancear custos:
+
+<ul>
+<li>Custo cognitivo de obter, armazenar e processar informação social: $C_{c} \propto n_{\text{edges}}$</li>
+<li>Custo Social de cometer erros de julgamento em situações sociais: $C_{s} \propto \frac{2}{n(n-1)}\displaystyle\sum_{i&lt;j}L_{ij}$</li>
+</ul></li>
+</ul>
+
+<p><center>
+<img src="./figs/starGraph.png" width="10%" />
+<img src="./figs/fullyconnected.png" width="10%" />
+</center></p>
+</div>
+      <div class='step' >
+    
+<h2>Agentes isolados</h2>
+
+<ul>
+<li><p>Variáveis dinâmicas do agente $k$:
+$$M^{k}_{ij} = \begin{cases} 1  &amp; \text{se $i$ e $j$ estão ligados no grafo de $k$} \\  0  &amp; \text{outro caso}   \end{cases}$$</p></li>
+<li><p>Custo total do agente $k$: $C(M^k, \alpha) = \frac{n_{\text{edges}}(M^k)}{n(n-1)/2} + \alpha \bar{L}(M^k)$</p></li>
+<li><p>Modelo de máxima entropia:
+$$P(M | \alpha, \beta) = \frac{1}{Z(\alpha, \beta)} e^{-\beta C(M^k, \alpha)}$$</p></li>
+<li><p>Interpretação dos parâmetros</p>
+
+<ul>
+<li>$\alpha$ - importância relativa entre os custos, proxy para capacidade cognitiva.</li>
+<li>$\beta$ - intensidade de flutuações, pressão para  otimização do custo total</li>
+</ul></li>
 </ul>
 </div>
       <div class='step' >
     
+<h2>Minimização do custo ($\beta \to \infty$)</h2>
+
+<ul>
+<li>$\alpha &lt; 1$:</li>
+</ul>
+
+<p><center><img src="./figs/starGraph.png" width="10%" /></center></p>
+
+<ul>
+<li>$\alpha &gt; 1$:</li>
+</ul>
+
+<p><center><img src="./figs/fullyconnected.png" width="10%" /></center></p>
+
       </div>
     <script src="js/impress.js"></script>
     <script>impress().init();</script>
