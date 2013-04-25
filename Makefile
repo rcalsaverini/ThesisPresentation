@@ -1,30 +1,29 @@
 CC=pandoc -t beamer
-THEME=theme:Malmoe
+THEME=theme:Rochester
 TEMPLATE=my.beamer
-COLORTHEME=colortheme:dolphin
+COLORTHEME=colortheme:beaver
 RESOURCE=apresentacao.md
 INTERACTIVE=-i
+BIB=bibdatabase.bib
 
-pdf: output.pdf
+s5: $(RESOURCE)
+	@pandoc -s -t $@ --mathjax --self-contained $< -o index.html
 
-tex: output.tex
+slidy: $(RESOURCE)
+	@pandoc -s -t $@ --mathjax --self-contained $< -o index.html
 
-s5: index.html
 
-index.html: $(RESOURCE)
-	@pandoc -t s5 --mathjax --self-contained $< -o index.html
-
-output.pdf : $(RESOURCE)
-	@$(CC) $< -V $(THEME) -V $(COLORTHEME) --template $(TEMPLATE) -o $@
+pdf : $(RESOURCE)
+	@$(CC) -s $< -V $(THEME) -V $(COLORTHEME) --toc --slide-level=2 --bibliograph=$(BIB) --biblatex --template=$(TEMPLATE) -o output.pdf
 	@echo "pdf produced"
 
-output.tex : $(RESOURCE)
-	@$(CC) $< -V $(THEME) -V $(COLORTHEME) --template $(TEMPLATE) -o $@
+tex : $(RESOURCE)
+	@$(CC) -s $< -V $(THEME) -V $(COLORTHEME) --toc --slide-level=2 --bibliograph=$(BIB) --biblatex --template=$(TEMPLATE) -o output.tex
 	@echo "beamer tex produced"
 
 clean :
-	@$(RM) rm *.aux *.log *.nav *.out *.snm *.toc *.vrb
+	@$(RM) rm *.aux *.log *.nav *.out *.snm *.toc *.vrb *.bbl *.blg *.xml *~ *-blx.bib
 	@echo "temp files deleted"
 
 clean-all: clean
-	@$(RM) *.pdf *.tex *.html
+	@$(RM) *.pdf *.tex *.html 
